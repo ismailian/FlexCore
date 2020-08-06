@@ -1,0 +1,7 @@
+{
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.14",
+        "phpmailer/phpmailer": "^6.1",
+        "illuminate/database": "^7.23"
+    }
+}
