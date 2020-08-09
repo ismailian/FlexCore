@@ -1,6 +1,23 @@
-RewriteEngine On
 
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
+# BEGIN FlexCore
+<IfModule mod_rewrite.c>
 
-RewriteRule ^(.+)$ App.php/$1 [L]
+    RewriteEngine On
+    RewriteBase /
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+
+    
+
+    # Application Entry Point
+    DirectoryIndex App.php
+    RewriteRule !^assets\/(.+)$ App.php [L]
+
+    # Assets path 
+    RewriteRule ^assets\/(.+)$ Views/assets/$1 [L]
+
+
+</IfModule>
+# END FlexCore

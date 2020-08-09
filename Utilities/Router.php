@@ -9,6 +9,15 @@ class Router
         # get #
         if (Request::is_get($route)) {
 
+            // check if (route === /)
+            if ($route === '/') {
+
+              # View #
+              @Viewer::view($view);
+              # View #
+
+            }
+
             // check if view exists:
             if (Viewer::exists($view)) {
 
@@ -60,13 +69,13 @@ class Router
 /**
  * Router.php
  * ==========
- * 
- * 
+ *
+ *
  * description:
  *      Router should handle the absolute url using request method as a static method in router
  *      and then forward that to Viewer accordingly. With proper checks of course.
- * 
- * 
+ *
+ *
  *  ex:
  *      -> Router::get('home',        'the_view_to_forward_to');
  *      -> Router::post('user/login', 'the_view_to_forward_to');
