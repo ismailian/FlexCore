@@ -4,18 +4,19 @@
 
     RewriteEngine On
     RewriteBase /
+    Options -Indexes
 
+    # Rewrite Conditions #
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
 
 
-    
+    # Rewrite Rules for Views Templates #
+    DirectoryIndex                      Views/index.php
+    RewriteRule ^([iI]ndex|[hH]ome)$    Views/index.php [L]
 
-    # Application Entry Point
-    DirectoryIndex App.php
-    RewriteRule !^assets\/(.+)$ App.php [L]
 
-    # Assets path 
+    # Assets Folder #
     RewriteRule ^assets\/(.+)$ Views/assets/$1 [L]
 
 
