@@ -16,6 +16,7 @@ define("DATABASE", "");
 
 ## directories ##
 define("ROOT",      $_SERVER['DOCUMENT_ROOT'] . "/");
+define("CONFIG",    ROOT . "Config/");
 define("Modules",   ROOT . "Modules/");
 define("Utilities", ROOT . "Utilities/");
 define("Functions", ROOT . "Functions/");
@@ -29,3 +30,4 @@ define("Vendor",    ROOT . "vendor/");
 ## setup tables here ##
 define('USERS',    "users");
 ## setup tables here ##
+

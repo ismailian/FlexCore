@@ -87,4 +87,12 @@ class Response
         Response::json("debug", $message);
         ## error ##
     }
+
+    ## content-types ##
+    public static function ctype($type)
+    {
+        ## set the type ##
+        return header("Content-Type: application/{$type}");
+        ## set the type ##
+    }
 }

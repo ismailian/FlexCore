@@ -5,3 +5,12 @@
 ##############################################
 require_once __DIR__ . '/config/Init.php';   #
 ##############################################
+
+
+## ROUTES ##
+Router::get('home', 'index');
+## ROUTES ##
+
+
+Router::
+default();

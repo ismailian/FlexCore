@@ -1,10 +1,5 @@
 <?php
 
-/*
-* This class handles export requests.
-*/
-
-
 class Export
 {
 

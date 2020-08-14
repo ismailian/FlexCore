@@ -1,0 +1,21 @@
+{
+	"app": {
+		"name":        "FlexCore",
+		"version":     "1.0.0",
+		"envirenment": "local"
+	},
+	"database": {
+		"hostname":    "localhost",
+		"username":    "root",
+		"password":    "",
+		"database":    ""
+	},
+	"mail": {
+		"hostname":    "smtp.gmail.com",
+		"port":        "587",
+		"username":    "g_user",
+		"password":    "g_pass",
+		"address":     "support@{APP_NAME}.com",
+		"name":        "Support Team"
+	}
+}

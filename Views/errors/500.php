@@ -1,17 +1,1 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>500 | Internal Server Error</title>
-</head>
-
-<body>
-
-    <h2 style="color: red;">Ooops!</h2>
-    <h4>Seems like there's been a server issue!</h4>
-
-</body>
-
-</html>
+<?php Response::json('error', ['info' => "Seems like there's been a server error!"]); ?>

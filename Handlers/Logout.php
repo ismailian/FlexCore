@@ -1,8 +1,5 @@
 <?php
 
-/*
-* This class handles logout requests.
-*/
 
 class Logout
 {

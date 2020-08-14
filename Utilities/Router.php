@@ -9,16 +9,6 @@ class Router
         # get #
         if (Request::is_get($route)) {
 
-            // check if (route === /)
-            if ($route === '/') {
-
-              # View #
-              @Viewer::view($view);
-              # View #
-
-            }
-
-            // check if view exists:
             if (Viewer::exists($view)) {
 
                 # View #
@@ -50,10 +40,10 @@ class Router
 
     // Handles Unhandled Routes:
     public static function
-    default($route, $view = null)
+    default($route = null, $view = null)
     {
         # default #
-        if (!Viewer::exists($route)) {
+        if (!Viewer::exists(UrlParser::absolutePath())) {
 
             # view # 404 page
             @Viewer::view('errors/404', 404);

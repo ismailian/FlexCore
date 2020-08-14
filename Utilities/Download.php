@@ -4,7 +4,7 @@ class Download
 {
 
     // push download of a file //
-    public static function push($fullpath, $filename, $contentType = "application/octect-stream")
+    public static function push($fullpath, $filename = null, $contentType = "application/octect-stream")
     {
 
         ## Redirect output to a client’s web browser ##

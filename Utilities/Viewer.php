@@ -14,6 +14,14 @@ class Viewer
             http_response_code($status_code);
             @include Viewer::match($view_name);
             ## exit();
+
+        } else {
+
+            ## 404 ##
+            http_response_code(404);
+            @include Viewer::match("errors/404");
+            ## exit();
+
         }
         # view #
     }

@@ -12,8 +12,8 @@
 
 
     # Rewrite Rules for Views Templates #
-    DirectoryIndex                      Views/index.php
-    RewriteRule ^([iI]ndex|[hH]ome)$    Views/index.php [L]
+    DirectoryIndex    Views/index.php
+    RewriteRule .     App.php
 
 
     # Assets Folder #

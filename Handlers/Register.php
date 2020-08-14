@@ -1,8 +1,5 @@
 <?php
 
-/*
-* This class handles registeration requests.
-*/
 
 class Register
 {
