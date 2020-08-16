@@ -1,0 +1,27 @@
+{
+  "name": "flex",
+  "version": "1.0.0",
+  "description": "This is a CLI for FlexCore API framework.",
+  "main": "index.js",
+  "bin": {
+    "flex": "./bin/flex.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "flex": "node ./bin/flex.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/z-offset/FlexCore.git"
+  },
+  "author": "Ismail Aatif",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/z-offset/FlexCore/issues"
+  },
+  "homepage": "https://github.com/z-offset/FlexCore#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "commander": "^6.0.0"
+  }
+}

@@ -19,6 +19,9 @@
     # Assets Folder #
     RewriteRule ^assets\/(.+)$ Views/assets/$1 [L]
 
+    # Prevent Access to app.json
+    RewriteRule ^/?Config/app\.json$ - [F,L]
+
 
 </IfModule>
 # END FlexCore

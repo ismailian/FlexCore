@@ -1,7 +1,18 @@
 {
-    "require": {
-        "phpoffice/phpspreadsheet": "^1.14",
-        "phpmailer/phpmailer": "^6.1",
-        "illuminate/database": "^7.23"
+  "name": "flexcore/flexcore",
+  "description": "This is a Micro framework equipped for building APIs.",
+  "type": "project",
+  "require": {
+    "phpoffice/phpspreadsheet": "^1.14",
+    "phpmailer/phpmailer": "^6.1",
+    "illuminate/database": "^7.23",
+    "guzzlehttp/guzzle": "^7.0"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ismail Aatif",
+      "email": "ismailaatif360@gmail.com"
     }
+  ]
 }
