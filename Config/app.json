@@ -5,10 +5,14 @@
     "envirenment": "local"
   },
   "database": {
+    "driver": "mysql",
     "hostname": "localhost",
     "username": "root",
     "password": "",
-    "database": ""
+    "database": "",
+    "charset": "utf8",
+    "collation": "utf8_unicode_ci",
+    "prefix": ""
   },
   "mail": {
     "hostname": "smtp.gmail.com",

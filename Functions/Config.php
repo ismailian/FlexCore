@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Config
 {
@@ -13,11 +13,9 @@ class Config
 	## static call method ##
 	public static function __CallStatic($name, $args)
 	{
-		if (isset(Config::load()->{$name})) 
-		{
+		if (isset(Config::load()->{$name})) {
 			return Config::load()->{$name};
 		}
 		return false;
-	}	 
-
+	}
 }

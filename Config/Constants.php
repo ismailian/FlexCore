@@ -25,9 +25,3 @@ define("Models",    ROOT . "Models/");
 define("Views",     ROOT . "Views/");
 define("Vendor",    ROOT . "vendor/");
 ## directories ##
-
-
-## setup tables here ##
-define('USERS',    "users");
-## setup tables here ##
-

@@ -23,8 +23,8 @@ class Download
         header('Pragma: no-cache');                                      ## HTTP/1.0
 
         ## source and distination streams ##
-        $sourceStream = fopen($fullpath, 'rb');
-        $distStream   = fopen('php://output', 'wb');
+        $srcStream = fopen($fullpath, 'rb');
+        $dstStream = fopen('php://output', 'wb');
         ## source and distination streams ##
 
         ## push download as a stream ##

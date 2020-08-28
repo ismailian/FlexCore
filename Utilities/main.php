@@ -4,6 +4,7 @@
 #######################################
 ##########  Import Utilities ##########
 #######################################
+require_once __DIR__ . "/IO.php";
 require_once __DIR__ . "/Request.php";
 require_once __DIR__ . "/Router.php";
 require_once __DIR__ . "/Redirector.php";

@@ -41,7 +41,7 @@ class Mailer
 
         try {
             ## Recipient:
-            Mailer::$mailer->setFrom($from, "MTL Wheels");
+            Mailer::$mailer->setFrom($from, "FlexCore Team");
             Mailer::$mailer->addAddress($to);     // Add a recipient
             Mailer::$mailer->addReplyTo($from);
 
