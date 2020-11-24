@@ -5,7 +5,7 @@
     "envirenment": "local"
   },
   "database": {
-    "driver": "mysql",
+    "dbdriver": "mysql",
     "hostname": "localhost",
     "username": "root",
     "password": "",
@@ -17,8 +17,8 @@
   "mail": {
     "hostname": "smtp.gmail.com",
     "port": "587",
-    "username": "g_user",
-    "password": "g_pass",
+    "username": "",
+    "password": "",
     "address": "support@{APP_NAME}.com",
     "name": "Support Team"
   }

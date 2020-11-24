@@ -7,7 +7,7 @@
 	Options -Indexes
 	
 	# Assets:
-	RewriteRule ^assets/(.+) Public/$1 [L] # dastracting from the 301 redirect.
+	RewriteRule ^assets/(.+) Public/$1 [L] # 301 => [200 OK]
 	RewriteRule ^Public/(.*)/(.+)$ 	- [L]
 	RewriteRule ^Views/errors/(.+)$	- [L]
 

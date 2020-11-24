@@ -1,9 +1,0 @@
-{
-	"root": "/",
-	"url": "/",
-	"paths": {},
-	"tables": {
-		"SITE": "fx_site",
-		"SETTINGS": "fx_settings"
-	}
-}

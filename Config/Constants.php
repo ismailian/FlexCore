@@ -1,17 +1,13 @@
 <?php
 
-
 ## App constants ##
 define("DEBUG_MODE", true);
-## App constants ##
-
 
 ## database ##
 define("HOSTNAME", "localhost");
 define("USERNAME", "root");
 define("PASSWORD", "");
 define("DATABASE", "");
-## database ##
 
 
 ## directories ##
@@ -24,4 +20,3 @@ define("Handlers",  ROOT . "Handlers/");
 define("Models",    ROOT . "Models/");
 define("Views",     ROOT . "Views/");
 define("Vendor",    ROOT . "vendor/");
-## directories ##
