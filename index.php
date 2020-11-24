@@ -17,5 +17,3 @@ $router->get('/', 'index');
 # Dynamic Routes with Params
 $router->get('/u/@{user}',         'users/index');
 $router->get('/u/@{user}/profile', 'users/profile');
-
-echo "hello world!";

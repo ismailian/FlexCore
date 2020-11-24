@@ -1,23 +1,13 @@
 <?php
 
-
-class Login
-{
-
-  public static function Start()
-  {
-
-    # setup your Login handlers here #
-
-  }
-}
+namespace App\Handlers;
 
 /**
- * Login
- * ==========
- * 
- * 
- * description:
- *      Login handles authentication requests.
- * 
+ * [Login::handler] handles login attempts.
  */
+class Login
+{
+  public static function Init()
+  {
+  }
+}

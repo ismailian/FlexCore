@@ -1,23 +1,13 @@
 <?php
 
-
-class Fetch
-{
-
-    public static function Start()
-    {
-
-        # setup your fetch handlers here #
-
-    }
-}
+namespace App\Handlers;
 
 /**
- * Fetch
- * ==========
- * 
- * 
- * description:
- *      Fetch handles data get requests.
- * 
+ * [Fetch::handler] handles data fetching from db to views.
  */
+class Fetch
+{
+    public static function Init()
+    {
+    }
+}

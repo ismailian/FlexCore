@@ -1,26 +1,13 @@
 <?php
 
-/*
-* This class handles delete requests.
-*/
-
-class Delete
-{
-
-  public static function Start()
-  {
-
-    ## setup your delete handlers here ##
-
-  }
-}
+namespace App\Handlers;
 
 /**
- * Delete.php
- * ==========
- * 
- * 
- * description:
- *      Delete handles Delete requests.
- * 
+ * [Delete::handler] handles data removals.
  */
+class Delete
+{
+  public static function Init()
+  {
+  }
+}

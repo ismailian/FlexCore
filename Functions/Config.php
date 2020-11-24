@@ -1,11 +1,12 @@
 <?php
 
+namespace App\Functions;
+
 class Config
 {
-
 	/**
-	 * a private function that loads in config data.
-	 * return mixed Elements in config file.
+	 * Load in config data.
+	 * @return Mixed elements in config file.
 	 */
 	private static function load()
 	{
@@ -15,8 +16,8 @@ class Config
 
 	/**
 	 * Get config elements by ParentNode
-	 * $name String the name of the parent node.
-	 * return child elements of the required element.
+	 * @param String $name the name of the parent node.
+	 * @return Mixed|False elements of the required node.
 	 */
 	public static function __CallStatic($name, $args)
 	{

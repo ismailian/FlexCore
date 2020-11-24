@@ -1,22 +1,13 @@
 <?php
 
-class Export
-{
-
-    public static function Start()
-    {
-
-        ## setup your export handlers here ##
-
-    }
-}
+namespace App\Handlers;
 
 /**
- * Export.php
- * ==========
- * 
- * 
- * description:
- *      Export handles data Export requests.
- * 
+ * [Export::handler] pushes downloads.
  */
+class Export
+{
+    public static function Init()
+    {
+    }
+}

@@ -1,26 +1,13 @@
 <?php
 
-/*
-* This class handles create requests.
-*/
-
-class Create
-{
-
-  public static function Start()
-  {
-
-    ## setup your handlers here ##
-
-  }
-}
+namespace App\Handlers;
 
 /**
- * Create.php
- * ==========
- * 
- * 
- * description:
- *      Create handles Create requests.
- * 
+ * [Create::handler] monitors all new data going into database.
  */
+class Create
+{
+  public static function Init()
+  {
+  }
+}

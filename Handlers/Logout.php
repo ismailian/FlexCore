@@ -1,23 +1,13 @@
 <?php
 
-
-class Logout
-{
-
-  public static function Start()
-  {
-
-    ## setup your logout handlers here ##
-
-  }
-}
+namespace App\Handlers;
 
 /**
- * Logout.php
- * ==========
- * 
- * 
- * description:
- *      Logout handles Logout requests.
- * 
+ * [Logout::handler] handles logout attempts.
  */
+class Logout
+{
+  public static function Init()
+  {
+  }
+}

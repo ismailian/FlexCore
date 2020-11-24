@@ -1,24 +1,13 @@
 <?php
 
-
-class Register
-{
-
-  public static function Start()
-  {
-
-    ## setup your Register handlers here ##
-
-  }
-}
-
+namespace App\Handlers;
 
 /**
- * Register.php
- * ==========
- * 
- * 
- * description:
- *      register handles registration requests.
- * 
+ * [Register::handler] handles registration attempts.
  */
+class Register
+{
+  public static function Init()
+  {
+  }
+}

@@ -2,7 +2,7 @@
   "app": {
     "name": "FlexCore",
     "version": "1.0.0",
-    "envirenment": "local"
+    "envirenment": "development"
   },
   "database": {
     "dbdriver": "mysql",
