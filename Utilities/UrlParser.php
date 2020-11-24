@@ -21,24 +21,31 @@ class UrlParser
         return array_merge(array('/'), Cleaner::clean_array(explode('/', $uriInfo)));
     }
 
-    # check wether url is dynamic:
+    /**
+     * Check if route is parameterized.
+     * @param String $route the route to check for parameters.
+     * @return Mixed|False returns match results if any, otherwise false.
+     */
     public static function isParameterized($route)
     {
         return @preg_match('/^.+(?<placeholder>\{(?<keyword>.+)\})(.+)?$/i', $route, $result);
     }
 
-    # url with paramets parsed
-    public function match($pattern)
+    /**
+     * Match a pattern in request route.
+     * @param String $pattern the patten to check for.
+     * @return Mixed|False returns match results if any, otherwise false.
+     */
+    public static function match($pattern)
     {
-        // match placeholder & keyword
+        # match placeholder & keyword
         @preg_match('/^.+(?<placeholder>\{(?<keyword>.+)\})(.+)?$/i', $pattern, $placeholder);
         @preg_match('|^(?<name>.+):(?<chars>.+)$|iU', $placeholder['keyword'], $chars);
 
         $keyword = $placeholder['keyword'];
         $badChars = "[^/\\ ]";
 
-        if (!empty($chars))
-        {
+        if (!empty($chars)) {
             $keyword  = $chars['name'];
             $badChars = str_replace(',', '', $chars['chars']);
             $badChars = "[^/\\ {$badChars}]";
@@ -56,8 +63,7 @@ class UrlParser
         $match = !empty($argument) ? $argument[0] : null;
         $param = !empty($argument) ? $argument[$placeholder['keyword']] : null;
 
-        if (!empty($argument))
-        {
+        if (!empty($argument)) {
             return (object)[
                 "url"      => $match,
                 "$keyword" => $param,

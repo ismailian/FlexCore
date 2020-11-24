@@ -2,6 +2,7 @@
 
 namespace App\Utilities;
 
+use App\Utilities\Request;
 use App\Utilities\UrlParser;
 use App\Utilities\Viewer;
 
@@ -26,7 +27,6 @@ class Router
                 if (!in_array($route, $this->routes)) array_push($this->routes, $data->url);
                 if (Request::is_get($route)) return @Viewer::view($view, $data);
             }
-
         } else {
             if (UrlParser::absolutePath() !== $route) return;
             if (!in_array($route, $this->routes)) array_push($this->routes, $route);
@@ -49,7 +49,7 @@ class Router
         if (UrlParser::absolutePath() !== $route) return;
         if (!in_array($route, $this->routes)) array_push($this->routes, $route);
         if ($this->dumpRoutes) return;
-    
+
         // render
         @Viewer::view($view);
     }
