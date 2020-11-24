@@ -13,7 +13,7 @@
 
     <div id="App">
         <div class="w-100">
-            <img class="" src="/assets/img/logo-01.png" alt="Woman paying for a purchase">
+            <img class="" src="/assets/img/logo-01.png" alt="FlexCore Logo">
         </div>
         <div class="">
             <div class="text-2xl leading-2 tracking-wider uppercase text-blue-600 font-bold mb-3 main-label">FlexCore</div>
