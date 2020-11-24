@@ -1,7 +1,7 @@
 <?php
 
 # error logging..
-error_reporting(E_ERROR);
+error_reporting(E_ALL);
 
 # Session
 session_start();

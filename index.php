@@ -8,12 +8,14 @@ require_once __DIR__ . '/Config/App.php';   #
 use App\App;
 use App\Utilities\Router;
 
-# set up router
+# setup router
 $router = new Router();
 
-# Regular Routes
-$router->get('/', 'index');
+# regular routes
+$router->get('/',         'index');
+$router->get('/docs',     'docs');
+$router->get('/release',  'features');
 
-# Dynamic Routes with Params
+# advanced routes
 $router->get('/u/@{user}',         'users/index');
 $router->get('/u/@{user}/profile', 'users/profile');
