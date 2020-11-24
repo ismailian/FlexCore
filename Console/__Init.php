@@ -1,7 +1,6 @@
 <?php
 
 # libraries #
-require_once "/www/FlexCore/Utilities/main.php";
 require_once __DIR__ . "/_lib/argParser.php";
 
 
