@@ -1,64 +1,83 @@
 <?php
 
+namespace App\Utilities;
+
+use App\Utilities\UrlParser;
+use App\Utilities\Viewer;
+
 class Router
 {
 
-    // Handles Get Method:
-    public static function get($route, $view)
+    private $routes;
+    public $dumpRoutes = false;
+
+    function __construct()
     {
-        # get #
-        if (Request::is_get($route)) {
+        $this->routes = [];
+    }
 
-            if (Viewer::exists($view)) {
 
-                # View #
-                @Viewer::view($view);
-                # View #
-
+    // Handles Get Method:
+    public function get($route, $view, $middleware = null)
+    {
+        if (UrlParser::isParameterized($route)) {
+            if (UrlParser::match($route)) {
+                $data = UrlParser::match($route);
+                if (!in_array($route, $this->routes)) array_push($this->routes, $data->url);
+                if (Request::is_get($route)) return @Viewer::view($view, $data);
             }
+
+        } else {
+            if (UrlParser::absolutePath() !== $route) return;
+            if (!in_array($route, $this->routes)) array_push($this->routes, $route);
+            if (Request::is_get($route)) return @Viewer::view($view);
         }
-        # get #
     }
 
     // Handles Post Method:
-    public static function post($route, $view)
+    public function post($route, $view, $middleware = null)
     {
-        # post #
-        if (Request::is_post($route)) {
-
-            // check if view exists:
-            if (Viewer::exists($view)) {
-
-                # View #
-                @Viewer::view($view);
-                # View #
-
-            }
-        }
-        # post #
+        if (UrlParser::absolutePath() !== $route) return;
+        if (!in_array($route, $this->routes)) array_push($this->routes, $route);
+        if (Request::is_post($route)) @Viewer::view($view);
+        @Viewer::view('errors/404', 404);
     }
 
-    // Handles Unhandled Routes:
-    public static function
-    default($route = null, $view = null)
+    // Directly Render View:
+    public function render($route, $view, $middleware = null)
     {
-        # default #
-        if (!Viewer::exists(UrlParser::absolutePath())) {
+        if (UrlParser::absolutePath() !== $route) return;
+        if (!in_array($route, $this->routes)) array_push($this->routes, $route);
+        if ($this->dumpRoutes) return;
+    
+        // render
+        @Viewer::view($view);
+    }
 
-            # view # 404 page
+    // private methods
+
+    # dump all registered routes
+    private function dump()
+    {
+        // Response::json('debug', ['routes' => $this->routes]);
+        Response::ctype('application/json');
+        print_r($this->routes);
+        exit();
+    }
+
+    function __destruct()
+    {
+        $currentPath = UrlParser::absolutePath();
+        if (!in_array($currentPath, $this->routes)) {
             @Viewer::view('errors/404', 404);
-            # view # 404 page
-
+            exit();
         }
-        # default #
     }
 }
 
-
-
 /**
- * Router.php
- * ==========
+ * Router
+ * ------
  *
  *
  * description:

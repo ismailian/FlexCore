@@ -1,23 +1,39 @@
 # BEGIN FlexCore
 <IfModule mod_rewrite.c>
 
-    RewriteEngine On
-    # Options -Indexes
-    # RewriteBase /Core/
+	# Engine and Base:
+	RewriteEngine On
+	RewriteBase /
+	Options -Indexes
+	
+	# Assets:
+	RewriteRule ^assets/(.+) Public/$1 [L] # dastracting from the 301 redirect.
+	RewriteRule ^Public/(.*)/(.+)$ 	- [L]
+	RewriteRule ^Views/errors/(.+)$	- [L]
 
-    # Rewrite Conditions #
-    # RewriteCond %{REQUEST_FILENAME} !-f
-    # RewriteCond %{REQUEST_FILENAME} !-d
+	# Directory Rules:
+	RewriteRule ^index\.php$ - [L]
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule . /index.php [L]
 
-    # Assets Folder #
-    # RewriteRule ^assets\/(.+)$ Views/assets/$1 [L]
+	# Deny Access To Private Directories:
+	RewriteRule ^Config|Config/.+$			- [R=404,L]
+	RewriteRule ^Functions|Functions/.+$	- [R=404,L]
+	RewriteRule ^Handlers|Handlers/.+$		- [R=404,L]
+	RewriteRule ^Models|Models/.+$			- [R=404,L]
+	RewriteRule ^Modules|Modules/.+$		- [R=404,L]
+	RewriteRule ^Utilities|Utilities/.+$	- [R=404,L]
+	RewriteRule ^Views|Views/.+$			- [R=404,L]
+	RewriteRule ^Public|Public/.+$			- [R=404,L]
+	RewriteRule ^vendor|vendor/.+$			- [R=404,L]
 
-    # Prevent Access to app.json
-    RewriteRule ^/?Config/app\.json$ Core/App.php [QSA,L]
+	# Deny Access To Private Files:
+	RewriteRule ^((.*)\.json|(.*)\.md)/?$ - [R=404,L]
 
-    # Rewrite Rules for Views Templates #
-    
-    #RewriteRule ^ Core/ [QSA,L]
+	# Custom Error Documents:
+	ErrorDocument 404 /Views/errors/404.php
+	ErrorDocument 500 /Views/errors/500.php
 
 
 </IfModule>

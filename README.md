@@ -1,2 +1,4 @@
 # FlexCore
-This is a personal PHP MVC Framework
+  --------
+
+This is a personalized PHP MVC Framework.

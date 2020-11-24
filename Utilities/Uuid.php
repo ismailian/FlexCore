@@ -1,8 +1,11 @@
 <?php
 
+namespace App\Utilities;
+
 class Uuid
 {
 
+    // uuid version 1.0 // 6-char id: #xxxxxx
     public static function v1()
     {
         ## return ##
@@ -11,6 +14,7 @@ class Uuid
     }
 
 
+    // uuid version 2.0 // 8-char id: #xxxxxxxxx
     public static function v2()
     {
         ## return ##
@@ -19,6 +23,7 @@ class Uuid
     }
 
 
+    // uuid version 1.0 // 4-char 3-part id: #xxxxxx
     public static function v3()
     {
         ## parts ##
@@ -33,6 +38,7 @@ class Uuid
     }
 
 
+    // uuid version 1.0 // 4-char 4-part id: #xxxxxx
     public static function v4()
     {
         ## parts ##
@@ -63,6 +69,6 @@ class Uuid
  *  Usage:
  *      -> Uuid::v1(); => #xxxxxx
  *      -> Uuid::v2(); => #xxxxxxxx
- *      -> Uuid::v3(); => #xxxx-xxxx-xxxx
- *      -> Uuid::v4(); => #xxxx-xxxx-xxxx-xxxx
+ *      -> Uuid::v3(); => #xxx-xxx-xxx
+ *      -> Uuid::v4(); => #xxxx-xxxx-xxxx
  */

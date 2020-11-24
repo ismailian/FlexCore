@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: 'Sora', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #093637;  /* fallback for old browsers */
+  /*background: -webkit-linear-gradient(top right, #093637, #44A08D);*/
+  /*background: linear-gradient(top right, #093637, #44A08D);*/
+}
+
+a {
+  color: #FFF;
+}

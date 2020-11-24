@@ -1,52 +1,42 @@
 <?php
 
+namespace App\Utilities;
 
 class Viewer
 {
 
-
     ## Renders The View:
-    public static function view($view_name, $status_code = 200)
+    public static function view($view_name, $data = null, $status_code = 200)
     {
-        # view #
-        if (Viewer::exists($view_name)) {
-
+        if (static::match($view_name)) 
+        {
             http_response_code($status_code);
-            @include Viewer::match($view_name);
-            ## exit();
-
-        } else {
-
-            ## 404 ##
-            http_response_code(404);
-            @include Viewer::match("errors/404");
-            ## exit();
-
+            if (!is_null($data)) {
+                \Carrier::input($data);
+            }
+            @include( static::match($view_name) );
+            exit();
         }
-        # view #
+
+        http_response_code(404);
+        @include (Views . 'errors/404.php');
+        exit();
     }
 
-    ## Matches View To File:
     private static function match($view_name)
     {
-        # match #
-        if (file_exists(Views . $view_name . ".php")) {
+        if (static::exists($view_name)) 
+        {
             return (Views . $view_name . ".php");
         }
         return false;
-        # match #
     }
 
-    ## Checks if View Exists:
-    public static function exists($view_name)
+    private static function exists($view_name)
     {
-        # exists #
         return (file_exists(Views . $view_name . ".php"));
-        # exists #
     }
 }
-
-
 
 
 /**
@@ -56,7 +46,6 @@ class Viewer
  * 
  * description:
  *      Viewer handles the rendering of the views as well as performing other checks.
- * 
  * 
  *  ex:
  *      -> Viewer::view('view_name');
