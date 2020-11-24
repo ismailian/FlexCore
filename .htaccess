@@ -1,26 +1,23 @@
-
 # BEGIN FlexCore
 <IfModule mod_rewrite.c>
 
     RewriteEngine On
-    RewriteBase /
-    Options -Indexes
+    # Options -Indexes
+    # RewriteBase /Core/
 
     # Rewrite Conditions #
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-
-
-    # Rewrite Rules for Views Templates #
-    DirectoryIndex    Views/index.php
-    RewriteRule .     App.php
-
+    # RewriteCond %{REQUEST_FILENAME} !-f
+    # RewriteCond %{REQUEST_FILENAME} !-d
 
     # Assets Folder #
-    RewriteRule ^assets\/(.+)$ Views/assets/$1 [L]
+    # RewriteRule ^assets\/(.+)$ Views/assets/$1 [L]
 
     # Prevent Access to app.json
-    RewriteRule ^/?Config/app\.json$ - [F,L]
+    RewriteRule ^/?Config/app\.json$ Core/App.php [QSA,L]
+
+    # Rewrite Rules for Views Templates #
+    
+    #RewriteRule ^ Core/ [QSA,L]
 
 
 </IfModule>
