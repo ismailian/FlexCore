@@ -1,4 +1,4 @@
-gitignore
+/.gitignore
 /vendor
 /node_modules
-list.todo
+/list.todo
