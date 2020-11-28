@@ -1,6 +1,6 @@
 <?php
 
-// namespaces //
+namespace Flex\Utilities;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

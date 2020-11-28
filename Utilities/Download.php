@@ -1,37 +1,31 @@
 <?php
 
+namespace Flex\Utilities;
+
 class Download
 {
 
-    // push download of a file //
-    public static function push($fullpath, $filename = null, $contentType = "application/octect-stream")
-    {
+  /**
+   * push downloads to client browser
+   */
+  public static function push($fullpath, $filename = null, $contentType = "application/octect-stream")
+  {
+    header('Content-Type: ' . $contentType);
+    header('Content-Disposition: attachment;filename="' . $filename . '"');
 
-        ## Redirect output to a client’s web browser ##
-        header('Content-Type: ' . $contentType);
-        header('Content-Disposition: attachment;filename="' . $filename . '"');
+    header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+    header('Cache-Control: no-cache, max-age=0');
+    header('Cache-Control: no-cache, max-age=0, stale-while-revalidate=300');
 
-        ## cach control ##
-        header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
-        header('Cache-Control: no-cache, max-age=0');
-        header('Cache-Control: no-cache, max-age=0, stale-while-revalidate=300');
-        ## cach control ##
+    header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');                ## Date in the past.
+    header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');   ## always modified
+    header('Pragma: no-cache');                                      ## HTTP/1.0
 
-        ## If you're serving to IE over SSL, then the following may be needed
-        header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');                ## Date in the past.
-        header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');   ## always modified
-        header('Pragma: no-cache');                                      ## HTTP/1.0
+    $srcStream = fopen($fullpath, 'rb');
+    $dstStream = fopen('php://output', 'wb');
 
-        ## source and distination streams ##
-        $srcStream = fopen($fullpath, 'rb');
-        $dstStream = fopen('php://output', 'wb');
-        ## source and distination streams ##
-
-        ## push download as a stream ##
-        stream_copy_to_stream($sourceStream, $distStream);
-        ob_flush();
-        flush();
-        ## push download as a stream ##
-
-    }
+    stream_copy_to_stream($srcStream, $dstStream);
+    ob_flush();
+    flush();
+  }
 }

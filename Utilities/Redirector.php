@@ -1,8 +1,7 @@
 <?php
 
-/**
- * Redirection Manager
- */
+namespace Flex\Utilities;
+
 class Redirector
 {
 

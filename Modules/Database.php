@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Modules;
+namespace Flex\Modules;
 
-use App\Functions\Config;
+use Flex\Functions\Config;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 class Connector

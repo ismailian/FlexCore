@@ -1,8 +1,6 @@
 <?php
 
-/**
- * This Class is For sanitizing Inputs and Outputs:
- */
+namespace Flex\Utilities;
 
 class Sanitizer
 {

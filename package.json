@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/z-offset/FlexCore.git"
+    "url": "git+https://github.com/cyberliberty/FlexCore.git"
   },
   "author": "Ismail Aatif",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/z-offset/FlexCore/issues"
+    "url": "https://github.com/cyberliberty/FlexCore/issues"
   },
-  "homepage": "https://github.com/z-offset/FlexCore#readme",
+  "homepage": "https://github.com/cyberliberty/FlexCore#readme",
   "dependencies": {
     "colors": "^1.4.0",
     "commander": "^6.0.0"

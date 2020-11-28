@@ -5,7 +5,7 @@
 	RewriteEngine On
 	RewriteBase /
 	Options -Indexes
-	
+
 	# Assets:
 	RewriteRule ^assets/(.+) Public/$1 [L] # 301 => [200 OK]
 	RewriteRule ^Public/(.*)/(.+)$ 	- [L]

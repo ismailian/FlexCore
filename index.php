@@ -4,18 +4,24 @@
 require_once __DIR__ . '/Config/App.php';   #
 # ----------------------------------------- #
 
+use Flex\Utilities\Router;
+use Flex\Handlers\AuthHandler;
+use Flex\Handlers\HomeHandler;
+use Flex\Handlers\UserHandler;
+use Flex\Handlers\DownloadHandler;
 
-use App\App;
-use App\Utilities\Router;
-
-# setup router
+// # setup router
 $router = new Router();
 
 # regular routes
-$router->get('/',         'index');
-$router->get('/docs',     'docs');
-$router->get('/release',  'features');
+$router->get('/',         [HomeHandler::class, "index"]);
+$router->get('/docs',     [HomeHandler::class, "docs"]);
+$router->get('/release',  [HomeHandler::class, "release"]);
+
+# auth routes:
+$router->get('/login',    [AuthHandler::class, "login"]);
+$router->get('/register', [AuthHandler::class, "register"]);
 
 # advanced routes
-$router->get('/u/@{user}',         'users/index');
-$router->get('/u/@{user}/profile', 'users/profile');
+$router->get('/@{user}',         [UserHandler::class, "index"]);
+$router->get('/@{user}/profile', [UserHandler::class, "show"]);

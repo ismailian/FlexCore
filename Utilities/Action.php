@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Utilities;
+namespace Flex\Utilities;
+
+use Flex\Utilities\Sessioneer;
 
 class Action
 {

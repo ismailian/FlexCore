@@ -1,20 +1,10 @@
 <?php
 
-#######################################
-###########  Import Handlers ##########
-#######################################
-require_once __DIR__ . '/Login.php';
-require_once __DIR__ . '/Logout.php';
-require_once __DIR__ . '/Create.php';
-require_once __DIR__ . '/Edit.php';
-require_once __DIR__ . '/Delete.php';
-require_once __DIR__ . '/Register.php';
-require_once __DIR__ . '/Fetch.php';
-require_once __DIR__ . '/Export.php';
+# ----------------------------------------- #
+# -------------- Import Handlers ---------- #
+# ----------------------------------------- #
 
-
-/**
- * ===========================================================
- * This File is responsible for including all other libraries. 
- * ===========================================================
- */
+require_once __DIR__ . '/AuthHandler.php';
+require_once __DIR__ . '/HomeHandler.php';
+require_once __DIR__ . '/UserHandler.php';
+require_once __DIR__ . '/DownloadHandler.php';

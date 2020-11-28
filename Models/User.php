@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace Flex\Models;
 
-use Illuminate\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\Model as Model;
 
-class User extends Eloquent
+class User extends Model
 {
     protected $fillable = [];
     protected $hidden   = [];

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Functions;
+namespace Flex\Functions;
 
 class Server
 {
@@ -31,5 +31,16 @@ class Server
 	public static function header($header_name)
 	{
 		return isset($_SERVER[$header_name]) ? $_SERVER[$header_name] : null;
+	}
+
+	/**
+	 * tweak header content
+	 * 
+	 * @param string $key the header key.
+	 * @param string $value the header value.
+	 */
+	public static function setHeader($key, $value)
+	{
+		@header("{$key}: $value");
 	}
 }

@@ -2,7 +2,8 @@
   "app": {
     "name": "FlexCore",
     "version": "1.0.0",
-    "envirenment": "development"
+    "envirenment": "development",
+    "debug_mode": true
   },
   "database": {
     "dbdriver": "mysql",
@@ -21,5 +22,16 @@
     "password": "",
     "address": "support@{APP_NAME}.com",
     "name": "Support Team"
+  },
+  "constants": {
+    "CONFIG": "Config/",
+    "Modules": "Modules/",
+    "Utilities": "Utilities/",
+    "Functions": "Functions/",
+    "Handlers": "Handlers/",
+    "Processors": "Processors/",
+    "Models": "Models/",
+    "Views": "Views/",
+    "Vendor": "vendor/"
   }
 }

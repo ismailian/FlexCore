@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Functions;
+namespace Flex\Functions;
 
 class Config
 {

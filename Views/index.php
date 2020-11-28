@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.6.2/tailwind.min.css" integrity="sha512-mZ+ZnjWE+WxIG8b8Ilysrfq7stpTrGu53lofHJbhuIe6iYmURmoXlZ4ycMN7qQoMhR3qWzVXF/q4N4UKfwmZeQ==" crossorigin="anonymous" />
     <link type="text/css" rel="stylesheet" href="/assets/css/style.css">
-    <title>FlexCore - Easy</title>
+    <title>FlexCore - Eazy & Flexible Micro Framework</title>
 </head>
 
 <body>

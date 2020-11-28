@@ -1,127 +1,123 @@
 <?php
 
 
-namespace App\Utilities;
+namespace Flex\Utilities;
 
-use App\Functions\Server;
-use App\Functions\Cleaner;
+use Flex\Functions\Server;
+use Flex\Functions\Cleaner;
 
 class Request
 {
 
-	/**
-	 * Parse the request method.
-	 * @return String the request method.
-	 */
-	public static function method()
-	{
-		# method #
-		return Server::header('REQUEST_METHOD');
-	}
+  /**
+   * Parse the request method.
+   * 
+   * @return String the request method.
+   */
+  public static function method()
+  {
+    return Server::header('REQUEST_METHOD');
+  }
 
-	public static function is_get($route = null)
-	{
-		if (is_null($route)) {
+  /** 
+   * check is request is GET
+   * 
+   * @param string $route the route to check against.
+   * @return bool return true on success, false on failure.
+   */
+  public static function isGet($route = null)
+  {
+    if (preg_match("/^(get|GET)$/", Server::header('REQUEST_METHOD')) === 1) {
+      if ($route) {
+        return (UrlParser::absolutePath() === $route) ? true : false;
+      }
+      return true;
+    }
+    return false;
+  }
 
-			if (preg_match("/^(get|GET)$/", Server::header('REQUEST_METHOD')) === 1) {
+  /** 
+   * Check is request is POST
+   * 
+   * @param string|array $route the route to check against.
+   * @return bool return true on success, false on failure.
+   */
+  public static function isPost($route = null)
+  {
+    if (preg_match("/^(post|POST)$/", Server::header('REQUEST_METHOD')) === 1) {
+      if (UrlParser::absolutePath() === $route) return true;
+    }
+    return false;
+  }
 
-				return true;
-			}
-			return false;
-		}
 
-		if (is_array($route)) {
+  /**
+   * get body content of post request
+   * 
+   * @return object returns object of post data.
+   */
+  public static function body()
+  {
+    return (object) ($_POST);
+  }
 
-			## match ##
-			if (preg_match("/^(get|GET)$/", Server::header('REQUEST_METHOD')) === 1 && UrlParser::segments() === $route) {
 
-				return true;
-			}
-			## match ##
-		} else {
+  /** 
+   * Check if post data has an input of given.
+   * 
+   * @param string $input_name the route to check against.
+   * @return bool return true on success, false on failure.
+   */
+  public static function postHas($input_name)
+  {
+    return isset($_POST[$input_name]);
+  }
 
-			## match ##
-			if (preg_match("/^(get|GET)$/", Server::header('REQUEST_METHOD')) === 1 && UrlParser::absolutePath() === $route) {
 
-				return true;
-			}
-			## match ##
-		}
+  /** 
+   * Get all query keys passed to server.
+   * 
+   * @return array returns an array of all query keys.
+   */
+  public static function queryKeys()
+  {
+    return array_keys((array) Request::query());
+  }
 
-		return false;
-		# is_get #
-	}
+  /**
+   * get all query items as an object.
+   * 
+   * @return object the query items.
+   */
+  public static function query()
+  {
+    $query_json = array();
+    $query_segments = explode("&", Server::header('QUERY_STRING'));
+    $query_segments = Cleaner::clean_array($query_segments);
 
-	// check is method === post:
-	public static function is_post($route = null)
-	{
-		if (is_null($route)) {
+    foreach ($query_segments as $fragment) {
+      $fragment = explode("=", $fragment);
+      $query_json["{$fragment[0]}"] = isset($fragment[1]) ? "{$fragment[1]}" : null;
+    }
+    return (object) ($query_json);
+  }
 
-			if (preg_match("/^(post|POST)$/", Server::header('REQUEST_METHOD')) === 1) {
+  /**
+   * check if query has an input name.
+   * 
+   * @param string $input the input name to check for.
+   * @return bool return true on success, false on failure.
+   */
+  public static function queryHas($input)
+  {
+    return (array_search($input, Request::queryKeys()) !== false) ? true : false;
+  }
 
-				return true;
-			}
-			return false;
-		}
-
-		if (preg_match("/^(post|POST)$/", Server::header('REQUEST_METHOD')) === 1 && UrlParser::absolutePath() === $route) {
-			return true;
-		}
-
-		return false;
-		# is_post #
-	}
-
-	// checks if post has a key:
-	public static function post_has($input_name)
-	{
-		# post_has #
-		return isset($_POST[$input_name]);
-		# post_has #
-	}
-
-	// check if query contains an element:
-	public static function query_keys()
-	{
-		# query_names #
-		return array_keys((array) Request::query_as_object());
-		# query_names #
-	}
-
-	// check if query contains an element:
-	public static function query_has($input)
-	{
-		# query_has #
-		return (array_search($input, Request::query_keys()) !== false) ? true : false;
-		# query_has #
-	}
-
-	// return the request query string:
-	public static function query_as_object()
-	{
-		# query_as_json #
-		$query_json = array();
-
-		$query_segments = explode("&", Server::header('QUERY_STRING'));
-		$query_segments = Cleaner::clean_array($query_segments);
-
-		foreach ($query_segments as $fragment) {
-
-			$fragment = explode("=", $fragment);
-
-			$query_json["{$fragment[0]}"] = isset($fragment[1]) ? "{$fragment[1]}" : null; //
-
-		}
-
-		return (object) ($query_json);
-		# query_as_json #
-	}
-
-	/**
-	 * Clean GET and POST super globals
-	 */
-	public static function clear()
-	{
-		unset($_REQUEST);
-	}
+  /**
+   * clean GET and POST super globals
+   */
+  public static function clear()
+  {
+    unset($_REQUEST);
+  }
 }

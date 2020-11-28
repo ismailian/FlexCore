@@ -1,7 +1,8 @@
 <?php
 
+namespace Flex\Utilities;
 
-// This class controls access to pages by user_role
+use Flex\Utilities\Sessioneer;
 
 class Middleware
 {
