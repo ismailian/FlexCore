@@ -3,7 +3,17 @@
     "name": "FlexCore",
     "version": "1.0.0",
     "envirenment": "development",
-    "debug_mode": true
+    "debug_mode": true,
+    "commands": [
+      "Handler",
+      "Model",
+      "Module",
+      "Utility",
+      "Function",
+      "View",
+      "Processor"
+    ],
+    "actions": ["Create", "Delete"]
   },
   "database": {
     "dbdriver": "mysql",
