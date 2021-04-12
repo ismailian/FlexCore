@@ -9,18 +9,16 @@ use PHPMailer\PHPMailer\SMTP;
 class Mailer
 {
 
-    // private protected mailer //
     private $mailer = null;
 
-    // private function for loading smtp credentials //
+
+    /**
+    * Load in phpmailer settings
+    */
     private static function load()
     {
-
-        ## load new instance ##
         Mailer::$mailer = new PHPMailer();
-        ## load new instance ##
 
-        ## Server settings
         Mailer::$mailer->SMTPDebug  = SMTP::DEBUG_OFF;                        # Enable verbose debug output
         Mailer::$mailer->isSMTP();                                            # Send using SMTP
         Mailer::$mailer->Host       = 'smtp.gmail.com';                       # Set the SMTP server to send through
@@ -29,46 +27,39 @@ class Mailer
         Mailer::$mailer->Password   = 'password';                             # SMTP password
         Mailer::$mailer->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            # Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
         Mailer::$mailer->Port       = 587;
-        ## Server settings ##
     }
 
-    // send an email //
+    /**
+    * Send an email
+    *
+    * @param string $from the from property.
+    * @param string $to the to address.
+    * @param string $subject the email subject.
+    * @param string $message the email content.
+    *
+    *
+    */
     public static function send($from = "root@localhost", $to, $subject, $message)
     {
-
-        ## load server settings ##
         Mailer::load();
 
         try {
-            ## Recipient:
+
             Mailer::$mailer->setFrom($from, "FlexCore Team");
-            Mailer::$mailer->addAddress($to);     // Add a recipient
+            Mailer::$mailer->addAddress($to);
             Mailer::$mailer->addReplyTo($from);
 
-            // Content:
             Mailer::$mailer->isHTML(false);
             Mailer::$mailer->Subject = $subject;
             Mailer::$mailer->Body    = ($message);
 
-            ## send
             if (!Mailer::$mailer->send()) {
-
-                ## return ##
                 return false;
-                ## return ##
-
             }
-
-            ## return ##
             return true;
-            ## return ##
 
         } catch (Exception $e) {
-
-            ## return error ##
             return Mailer::$mailer->ErrorInfo;
-            ## return error ##
-
         }
     }
 }

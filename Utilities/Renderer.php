@@ -2,33 +2,33 @@
 
 namespace Flex\Utilities;
 
-class Viewer
+class Renderer
 {
 
   /**
    * Render a view to the client browser.
-   * 
-   * @param   String $view_name the view name to render.
-   * @param   Mixed $data data to send to the view.
-   * @param   Int $status_code status code to accompany the response.
+   *
+   * @param   string $view_name the view name to render.
+   * @param   mixed $data data to send to the view.
+   * @param   int $status_code status code to accompany the response.
    */
   public static function view($view_name, $data = null, $status_code = 200)
   {
-    if (static::match($view_name)) {
-      http_response_code($status_code);
-      !is_null($data) ? extract($data, EXTR_OVERWRITE) : null;
-      @include(static::match($view_name));
-      exit();
-    }
+      if (static::match($view_name)) {
+          http_response_code($status_code);
+          !is_null($data) ? extract($data, EXTR_OVERWRITE) : null;
+          @include static::match($view_name);
+          exit();
+      }
 
-    http_response_code(404);
+      http_response_code(404);
     @include(Views . 'errors/404.php');
     exit();
   }
 
   /**
    * Match a view name to a template.
-   * 
+   *
    * @param   String $view_name the view name to match.
    * @return  String|False return template name on success, false on failure.
    */
@@ -42,7 +42,7 @@ class Viewer
 
   /**
    * Check is a view exists
-   * 
+   *
    * @param   String $view_name the view name.
    * @return  Bool returns true on success and false on failure.
    */

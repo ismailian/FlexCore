@@ -95,9 +95,9 @@ class UrlParser
    */
   public static function combine(string $route, $data)
   {
-    @preg_match('/^.+(?<placeholder>\{(?<keyword>.+)\})(.+)?$/i', $route, $placeholder);
-    if ($placeholder) {
-      return @preg_replace("/{$placeholder['placeholder']}/i", $data, $route);
+    @preg_match('/^.+(?<placeholder>\{(?<keyword>.+)\})(.+)?$/i', $route, $values);
+    if ($values) {
+      return @preg_replace("/{$values['placeholder']}/i", $data, $route);
     }
     return false;
   }

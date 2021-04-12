@@ -2,39 +2,19 @@
 <IfModule mod_rewrite.c>
 
 	# Engine and Base:
-	RewriteEngine On
+	RewriteEngine on
 	RewriteBase /
 	Options -Indexes
 
-	# Assets:
-	RewriteRule ^assets/(.+) Public/$1 [L] # 301 => [200 OK]
-	RewriteRule ^Public/(.*)/(.+)$ 	- [L]
-	RewriteRule ^Views/errors/(.+)$	- [L]
-
 	# Directory Rules:
 	RewriteRule ^index\.php$ - [L]
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule . /index.php [L]
-
-	# Deny Access To Private Directories:
-	RewriteRule ^Config|Config/.+$			- [R=404,L]
-	RewriteRule ^Functions|Functions/.+$	- [R=404,L]
-	RewriteRule ^Handlers|Handlers/.+$		- [R=404,L]
-	RewriteRule ^Models|Models/.+$			- [R=404,L]
-	RewriteRule ^Modules|Modules/.+$		- [R=404,L]
-	RewriteRule ^Utilities|Utilities/.+$	- [R=404,L]
-	RewriteRule ^Views|Views/.+$			- [R=404,L]
-	RewriteRule ^Public|Public/.+$			- [R=404,L]
-	RewriteRule ^vendor|vendor/.+$			- [R=404,L]
-
-	# Deny Access To Private Files:
-	RewriteRule ^((.*)\.json|(.*)\.md)/?$ - [R=404,L]
+	# RewriteCond %{REQUEST_FILENAME} !-f
+	# RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.*)$ /index.php [NC,L,QSA]
 
 	# Custom Error Documents:
 	ErrorDocument 404 /Views/errors/404.php
 	ErrorDocument 500 /Views/errors/500.php
-
 
 </IfModule>
 # END FlexCore

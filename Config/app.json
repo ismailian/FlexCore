@@ -2,7 +2,7 @@
   "app": {
     "name": "FlexCore",
     "version": "1.0.0",
-    "envirenment": "development",
+    "environment": "development",
     "debug_mode": true,
     "commands": [
       "Handler",
@@ -13,7 +13,11 @@
       "View",
       "Processor"
     ],
-    "actions": ["Create", "Delete"]
+    "actions": [
+      "List",
+      "Create",
+      "Delete"
+    ]
   },
   "database": {
     "dbdriver": "mysql",
@@ -33,15 +37,33 @@
     "address": "support@{APP_NAME}.com",
     "name": "Support Team"
   },
-  "constants": {
-    "CONFIG": "Config/",
-    "Modules": "Modules/",
-    "Utilities": "Utilities/",
-    "Functions": "Functions/",
-    "Handlers": "Handlers/",
-    "Processors": "Processors/",
-    "Models": "Models/",
-    "Views": "Views/",
-    "Vendor": "vendor/"
+  "constants": [
+    {
+      "CONFIG": "Config/"
+    },
+    {
+      "Modules": "Modules/"
+    },
+    {
+      "Utilities": "Utilities/"
+    },
+    {
+      "Functions": "Functions/"
+    },
+    {
+      "Handlers": "Handlers/"
+    },
+    {
+      "Processors": "Processors/"
+    },
+    {
+      "Models": "Models/"
+    },
+    {
+      "Views": "Views/"
+    },
+    {
+      "Vendor": "vendor/"
+    }
   }
 }

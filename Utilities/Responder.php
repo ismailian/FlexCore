@@ -7,42 +7,14 @@ class Response
 
   /**
    * send a json formed response with data.
-   * @param string $status the status name.
+   * @param int $status the status name.
    * @param mixed $data the data to send.
    */
-  public static function json(String $status, array $data = ["message" => "No Message!"])
+  public static function json(int $status, array $data = ["message" => "No Message!"])
   {
+    http_response_code($status);
     header("Content-Type: application/json");
-    http_response_code(200);
-    echo json_encode(array_merge(["status" => $status], $data));
-    exit();
-  }
-
-
-  /**
-   * send a regular text formed response with data.
-   * @param string $status the status name.
-   * @param mixed $data the data to send.
-   */
-  public static function text(String $status, array $data = ["message" => "No Message!"])
-  {
-    header("Content-Type: text/html");
-    http_response_code(200);
-    echo json_encode(array_merge(["status" => $status], $data));
-    exit();
-  }
-
-
-  /**
-   * send a not found response to client browser.
-   * @param string $message the message to send.
-   */
-  public static function notFound(String $message)
-  {
-    header("Content-Type: application/json");
-    http_response_code(404);
-    echo json_encode(["status" => "404 Not Found", "info" => $message]);
-    exit();
+    echo json_encode($data);
   }
 
 
@@ -52,14 +24,14 @@ class Response
    */
   public static function notAuthorized(String $message = null)
   {
-    header("Content-Type: application/json");
     http_response_code(401);
+    header("Content-Type: application/json");
     $default = "You don't have permissions to perform this action.";
+
     echo json_encode([
       "status" => "401 Unauthorized",
       "info" => is_null($message) ? $default : $message,
     ]);
-    exit();
   }
 
 
@@ -69,10 +41,9 @@ class Response
    */
   public static function serverFailure(String $message)
   {
-    header("Content-Type: application/json");
     http_response_code(500);
+    header("Content-Type: application/json");
     echo json_encode(["status" => "500 Internal Server Error", "info" => $message]);
-    exit();
   }
 
 
@@ -80,7 +51,7 @@ class Response
    * send a regular error message in the event of action failure. (not related to server failure.)
    * @param string $message the message to send.
    */
-  public static function default_error($message = null)
+  public static function error($message = null)
   {
     Response::json("error", [
       "info" => !is_null($message) ? $message : "Sorry, something went wrong!",

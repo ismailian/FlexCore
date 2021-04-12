@@ -5,24 +5,27 @@ namespace Flex\Utilities;
 class Redirector
 {
 
-    // redirect strange requests to home page:
+    /**
+     * Redirect to Home Path:
+     * 
+     */
     public static function home()
     {
-        ## home ##
         Request::clear();
         header("Location: /");
         return;
-        ## home ##
-
     }
 
-    // redirect somewhre else within public domain:
+    
+    /**
+     * @desc Redirect to A particular Path
+     * 
+     * @var string $path The URI to redirect to.
+     */
     public static function route(String $path)
     {
-        ## route ##
         Request::clear();
         header(str_replace("_r_", $path, "Location: /_r_"));
         return;
-        ## route ##
     }
 }

@@ -28,18 +28,22 @@ class Cli
         return;
       }
 
-      $output = "[~] ";
-      $output .= ($terminal->action === "create") ? "Creating a new " : "Deleting ";
-      $output .= $terminal->command . " ";
-      $output .= $terminal->name;
+      // $output = "[~] ";
+      // $output .= ($terminal->action === "create") ? "Creating a new " : "Deleting ";
+      // $output .= $terminal->command . " ";
+      // $output .= $terminal->name;
 
-      echo PHP_EOL;
-      echo $output;
-      echo PHP_EOL;
+      // echo PHP_EOL;
+      // echo $output;
+      // echo PHP_EOL;
 
-      IO::create(strtolower($terminal->command), $terminal->name);
-      echo ucfirst($terminal->command) . " created successfully.";
-      return;
+      if (IO::create(strtolower($terminal->command), $terminal->name)) {
+        echo (PHP_EOL . "[+] [" . @ucfirst($terminal->command) . "] created successfully." . PHP_EOL);
+        return;
+      }
+
+      echo (PHP_EOL . "[-] " . $terminal->command . " [{$terminal->name}] already exists!" . PHP_EOL);
+      return ;
     }
 
     Commander::help();

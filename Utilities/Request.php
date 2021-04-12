@@ -114,6 +114,17 @@ class Request
   }
 
   /**
+   * Get request headers
+   */
+  public static function headers($name = null)
+  {
+    if ($name) {
+      return getallheaders()[$name] ?? null;
+    }
+    return (object) getallheaders();
+  }
+
+  /**
    * clean GET and POST super globals
    */
   public static function clear()

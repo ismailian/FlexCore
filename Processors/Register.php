@@ -19,6 +19,6 @@ class Register
    */
   public static function submit(string $username, string $email, string $fullname, string $password)
   {
-    return ($username === "username" && $password === "password") ? true : false;
+    // code
   }
 }

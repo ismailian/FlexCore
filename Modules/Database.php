@@ -18,7 +18,7 @@ class Connector
       'database'  => Config::database()->database,
       'charset'   => Config::database()->charset,
       'collation' => Config::database()->collation,
-      'prefix'    => Config::database()->prefix
+      'prefix'    => Config::database()->prefix,
     ]);
 
     $capsule->bootEloquent();

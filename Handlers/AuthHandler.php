@@ -3,7 +3,7 @@
 namespace Flex\Handlers;
 
 use Flex\Utilities\Request;
-use Flex\Utilities\Viewer;
+use Flex\Utilities\Renderer;
 use Flex\Processors\Login;
 use Flex\Processors\Register;
 
@@ -14,7 +14,7 @@ class AuthHandler
   /**
    * Attempt an authentication. 
    * 
-   * @return view returns a view with data if any.
+   * @return void
    */
   public static function login()
   {
@@ -22,14 +22,14 @@ class AuthHandler
     $password = Request::body()->password;
 
     // $result = Login::submit($username, $password);
-    return @Viewer::view('auth.login');
+    return @Renderer::view('auth.login');
   }
 
 
   /**
    * Attempt a user registration.
    * 
-   * @return bool returns true on success, false on failure.
+   * @return void
    */
   public static function register()
   {
@@ -39,6 +39,6 @@ class AuthHandler
     $password = Request::body()->password;
 
     // $result = Register::submit($username, $email, $fullname, $password);
-    return @Viewer::view('auth.register');
+    return @Renderer::view('auth.register');
   }
 }

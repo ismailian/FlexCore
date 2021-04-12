@@ -9,5 +9,6 @@ class Logout
 {
   public static function index()
   {
+  	// code
   }
 }

@@ -4,45 +4,55 @@ namespace Flex\Utilities;
 
 class IO
 {
-
     /**
-     * @description This class creates, updates and deletes files.
-     */
-
-    /**
-     * @description Create new files.
+     * Create new files.
+     *
      * @param string $filename The full path of the file to be created.
-     * @return boolean returns true if the process was successfull, false if otherwise.
+     * @return boolean returns true if the process was successful, false if otherwise.
      */
     public static function create($filename)
     {
         try {
-
-            # create file #
             $handle = @fopen($filename, 'x+');
             @fwrite($handle, '');
             @fclose($handle);
             return true;
-            # create file #
-
         } catch (\Throwable $th) {
-
-            # return false #
             return false;
-            # return false #
-
         }
     }
 
     /**
-     * @description Delete files.
+     * Delete files.
+     *
      * @param string $filename The full path of the file to be deleted.
-     * @return boolean returns true if the process was successfull, false if otherwise.
+     * @return bool returns true if the process was successful, false if otherwise.
      */
     public static function delete($filename)
     {
-        # delete file #
         return unlink($filename);
-        # delete file #
+    }
+
+    /**
+     * Get absolute path of segment path(s) andOr file(s).
+     *
+     * @param array $paths
+     * @return string|false returns a string with the absolute path if exists, otherwise a false.
+     */
+    public static function get(...$paths)
+    {
+        $absolutePath = IO::storage(implode(DIRECTORY_SEPARATOR, $paths));
+        return file_exists($absolutePath) ? $absolutePath : false;
+    }
+
+    /**
+     * Get the given path prepended with the storage directory.
+     *
+     * @param string $path the directory within the storage.
+     * @return string returns the absolute path to the storage target directory.
+     */
+    private static function storage($path)
+    {
+        return (STORAGE . ($path[0] !== DIRECTORY_SEPARATOR ? DIRECTORY_SEPARATOR : null) . $path);
     }
 }

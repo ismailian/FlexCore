@@ -2,7 +2,7 @@
 
 namespace Flex\Handlers;
 
-use Flex\Utilities\Viewer;
+use Flex\Utilities\Renderer;
 
 
 class UserHandler
@@ -15,7 +15,7 @@ class UserHandler
    */
   public static function index($user)
   {
-    return @Viewer::view("users.index", [
+    return @Renderer::view("users.index", [
       "username" => $user->user,
     ]);
   }
@@ -28,9 +28,9 @@ class UserHandler
    */
   public static function show($user)
   {
-    return @Viewer::view("users.profile", [
+    return @Renderer::view("users.profile", [
       "username" => $user->user,
-      "email"    => $user->user . "@mail.com",
+      "email"    => $user->user . "@mailbox.com",
       "fullname" => "administrator",
     ]);
   }

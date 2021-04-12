@@ -7,7 +7,7 @@ use Flex\Functions\Server;
 use Flex\Utilities\Request;
 use Flex\Utilities\Response;
 use Flex\Utilities\UrlParser;
-use Flex\Utilities\Viewer;
+use Flex\Utilities\Renderer;
 
 class Router
 {
@@ -31,7 +31,9 @@ class Router
    */
   public function get($route, $handler)
   {
-    if (!Request::isGet()) return;
+    if (!Request::isGet()) {
+        return false;
+    };
 
     if ($this->data = UrlParser::match($route)) {
       if (!in_array($route, $this->routes)) array_push($this->routes, $this->data->url);
@@ -41,7 +43,10 @@ class Router
       );
     }
 
-    if (UrlParser::absolutePath() !== $route) return;
+    if (UrlParser::absolutePath() !== $route) {
+        return false;
+    };
+
     if (!in_array($route, $this->routes)) array_push($this->routes, $route);
     return @call_user_func("{$handler[0]}::{$handler[1]}", null);
   }
@@ -56,7 +61,9 @@ class Router
    */
   public function post($route, $handler)
   {
-    if (!Request::isPost()) return;
+    if (!Request::isPost()) {
+        return false;
+    };
 
     if ($this->data = UrlParser::match($route)) {
       if (!in_array($route, $this->routes)) array_push($this->routes, $this->data->url);
@@ -66,7 +73,10 @@ class Router
       );
     }
 
-    if (UrlParser::absolutePath() !== $route) return;
+    if (UrlParser::absolutePath() !== $route) {
+        return false;
+    };
+
     if (!in_array($route, $this->routes)) array_push($this->routes, $route);
     return @call_user_func("{$handler[0]}::{$handler[1]}", null);
   }
@@ -81,10 +91,14 @@ class Router
    */
   public function render($route, $view, $middleware = null)
   {
-    if (UrlParser::absolutePath() !== $route) return;
+    if (UrlParser::absolutePath() !== $route) {
+        return false;
+    };
     if (!in_array($route, $this->routes)) array_push($this->routes, $route);
-    if ($this->dumpRoutes) return;
-    return @Viewer::view($view);
+    if ($this->dumpRoutes) {
+        return false;
+    };
+    return @Renderer::view($view);
   }
 
 
@@ -94,7 +108,7 @@ class Router
    * @param string $route the route endpoint to redirect to.
    * @param string|array $data data that might be needed with the route such as params.
    */
-  public static function redirect(string $route, $params)
+  public static function redirect($route, $params)
   {
     Server::setHeader('location', UrlParser::combine($route, $params));
   }
@@ -118,8 +132,10 @@ class Router
   {
     $currentPath = UrlParser::absolutePath();
     if (!in_array($currentPath, $this->routes)) {
-      @Viewer::view('errors/404', null, 404);
-      exit();
+      @Response::json(404, [
+        'status' => 404,
+        'message' => 'Sorry, this resource does not exist.',
+      ]);
     }
   }
 }

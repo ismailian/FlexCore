@@ -17,6 +17,7 @@ class Cleaner
         });
     }
 
+    /**  */
     public static function array2string($array, $delimeter = ",")
     {
         $output = "";

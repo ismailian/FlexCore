@@ -2,41 +2,43 @@
 
 namespace Flex\Handlers;
 
-use Flex\Utilities\Viewer;
-
+use Flex\Utilities\Response;
+use Flex\Utilities\Auth;
 
 class HomeHandler
 {
 
   /**
-   * index page. 
+   * index resource. 
    * 
-   * @return view returns a views with data if any.
+   * @return void
    */
   public static function index()
   {
-    return @Viewer::view('index');
+    // return @Renderer::view('index');
+    return Response::json(200, [
+      'message' => "Welcome to FlexCore."
+    ]);
   }
 
 
   /**
-   * docs page
-   * 
-   * @return view returns a views with data if any.
+   * info resource.
    */
-  public static function docs()
+  public static function info()
   {
-    return @Viewer::view('docs');
+    if (!Auth::check())
+    {
+      return @Response::json(401, [
+        'status' => "NOT_AUTHORIZED",
+        'message' => "You are not permitted to access nor submit data to this resource."
+      ]);
+    }
+
+    return @Response::json(200, [
+      'status' => "WELCOME",
+      'message' => "Welcome to FlexCore.",
+    ]);
   }
 
-
-  /**
-   * release page
-   * 
-   * @return view returns a views with data if any.
-   */
-  public static function release()
-  {
-    return @Viewer::view('release');
-  }
 }

@@ -114,13 +114,13 @@ class Connector
 
       array_map(function ($row) {
 
-        array_push($this->result, (object) $row); //
+        array_push($this->result, (object) $row);
 
-      }, mysqli_fetch_all($resource, MYSQLI_ASSOC)); //
+      }, mysqli_fetch_all($resource, MYSQLI_ASSOC));
 
     } else {
 
-      $this->result = ($resource)->fetch_all(MYSQLI_ASSOC); //
+      $this->result = ($resource)->fetch_all(MYSQLI_ASSOC);
 
     }
   }
@@ -138,11 +138,11 @@ class Connector
 
       foreach ($fetch_only as $key) {
 
-        $keys .= "{$key}, "; //
+        $keys .= "{$key}, ";
 
       }
 
-      $cmd = str_replace('*', substr($keys, 0, strrpos($keys, ", ")), $cmd); //
+      $cmd = str_replace('*', substr($keys, 0, strrpos($keys, ", ")), $cmd);
 
     }
 
@@ -151,7 +151,7 @@ class Connector
 
       foreach ($where as $key => $value) {
 
-        $cmd .= strtoupper($key) . '="' . $this->__sanitize($value) . '" AND '; //
+        $cmd .= strtoupper($key) . '="' . $this->__sanitize($value) . '" AND ';
       }
     } else {
 
@@ -160,7 +160,7 @@ class Connector
 
     if (!is_null($operators)) {
 
-      $cmd = str_replace('=', $operators, $cmd); //
+      $cmd = str_replace('=', $operators, $cmd);
 
     }
 
@@ -173,7 +173,7 @@ class Connector
     // >> Send Query and return Results:
     $this->send($cmd);
 
-    return !empty($this->result) ? $this->result[0] : null; // return results
+    return !empty($this->result) ? $this->result[0] : null;
 
   }
 
@@ -198,7 +198,7 @@ class Connector
 
     }
 
-    if (!is_null($where)) { // >> Looping Through Params:
+    if (!is_null($where)) {
 
       $cmd .= " WHERE ";
 
@@ -208,23 +208,23 @@ class Connector
 
         if ($value === '!') {
 
-          $cmd .= "!" . strtoupper($key) . " AND "; //
+          $cmd .= "!" . strtoupper($key) . " AND ";
 
         } else {
 
           if (!$operators == null) {
 
-            $cmd .= strtoupper($key) . $operators[$key] . '"' . $this->__sanitize($value) . '" AND '; //
+            $cmd .= strtoupper($key) . $operators[$key] . '"' . $this->__sanitize($value) . '" AND ';
 
           } else {
 
-            $cmd .= strtoupper($key) . ' = "' . $this->__sanitize($value) . '" AND '; //
+            $cmd .= strtoupper($key) . ' = "' . $this->__sanitize($value) . '" AND ';
 
           }
         }
       }
 
-      $cmd = substr($cmd, 0, strrpos($cmd, " AND ")); //
+      $cmd = substr($cmd, 0, strrpos($cmd, " AND "));
 
     }
 
@@ -337,27 +337,21 @@ class Connector
   // Custom Query:
   function query(String $query)
   {
-
     $cmd = $this->__sanitize($query);
-
     $this->send($cmd);
-
     return $this->result;
   }
 
   // RETURN RESULTS:
   function results()
   {
-
     return !is_null($this->result) ? $this->result : null; // return results.
-
   }
 
   // DESTROY STORED DATA:
   private function __dispose()
   {
     $this->result = null;
-
     $this->count = 0;
   }
 }

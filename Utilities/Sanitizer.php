@@ -104,24 +104,3 @@ class Sanitizer
         return filter_input(INPUT_GET, $input_name, FILTER_SANITIZE_ADD_SLASHES);
     }
 }
-
-
-/**
- * 
- * Sanitizer.php
- * =============
- * 
- * description:
- *      Sanitizer parses and sanitizes inputs such as POST, GET...etc.
- *      
- * usage:
- *      -> Sanitizer::string();
- *      -> Sanitizer::integer();
- *      -> Sanitizer::post_integer();
- *      -> Sanitizer::post_usernamer();
- *      -> Sanitizer::post_email();
- *      -> Sanitizer::get_string();
- *      -> Sanitizer::get_array();
- *      -> Sanitizer::{{}}();       // call an initial key session holder.
- * 
- */
