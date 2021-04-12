@@ -8,13 +8,7 @@
 
 	# Directory Rules:
 	RewriteRule ^index\.php$ - [L]
-	# RewriteCond %{REQUEST_FILENAME} !-f
-	# RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteRule ^(.*)$ /index.php [NC,L,QSA]
-
-	# Custom Error Documents:
-	ErrorDocument 404 /Views/errors/404.php
-	ErrorDocument 500 /Views/errors/500.php
 
 </IfModule>
 # END FlexCore
